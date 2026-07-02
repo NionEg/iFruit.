@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iFruit OS - Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="dynamic-island"></div>
+
+        <div class="status-bar" id="global-status-bar">
+            <div class="status-time">00:00</div>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <div class="battery-container"><div class="battery-level"></div></div>
+            </div>
+        </div>
+
+        <div class="screen-content" id="home-page">
+            <div class="widgets-grid">
+                <div class="widget weather-widget" onclick="location.href='weather.html'">
+                    <span class="location">Vice City</span>
+                    <span class="temperature">38°</span>
+                </div>
+                <div class="widget news-widget">
+                     <img src="news.jpg" alt="News" class="news-img">
+                </div>
+            </div>
+
+            <div class="apps-grid">
+                <div class="app-item" onclick="location.href='whatsup.html'">
+                    <div class="app-icon whatsup-icon">
+                        <div class="whatsup-bubble"><div class="whatsup-arrow"></div></div>
+                    </div>
+                    <div class="app-label">WhatsUp</div>
+                </div>
+
+                <div class="app-item" onclick="location.href='lifeinvader.html'">
+                    <div class="app-icon lifeinvader-app-icon">L</div>
+                    <div class="app-label">LifeInvader</div>
+                </div>
+
+                <div class="app-item" onclick="location.href='fruitpay.html'">
+                    <img src="FruitPay.jpg" alt="FruitPay" class="app-icon fruitpay-icon-img">
+                    <div class="app-label">FruitPay</div>
+                </div>
+
+                <div class="app-item" onclick="location.href='phone.html'">
+                    <div class="app-icon phone-main-icon"><i class="fa-solid fa-phone"></i></div>
+                    <span class="app-label">Телефон</span>
+                </div>
+            </div>
+
+            <div class="home-dock">
+                <div class="dock-item phone-dock-btn" onclick="location.href='phone.html'">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="dock-item search-dock-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="dock-item message-dock-btn" onclick="location.href='whatsup.html'">
+                    <i class="fa-solid fa-comment-dots"></i>
+                </div>
+                <div class="dock-item settings-dock-btn" onclick="location.href='phone.html'">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-indicator-bar" onclick="location.href='index.html'">
+            <div class="home-indicator" id="global-home-indicator"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

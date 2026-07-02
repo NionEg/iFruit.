@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Телефон - Контакты</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="dynamic-island"></div>
+
+        <div class="status-bar dark-status-bar" id="global-status-bar">
+            <div class="status-time">00:00</div>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <div class="battery-container"><div class="battery-level"></div></div>
+            </div>
+        </div>
+
+        <div class="screen-content light-bg-app">
+            <div class="phone-app-header">
+                <span class="back-btn" onclick="location.href='index.html'">Назад</span>
+                <h2>Контакты</h2>
+                <i class="fa-solid fa-plus add-contact-icon"></i>
+            </div>
+            <div class="contacts-list">
+                <div class="contact-row" onclick="startCall('Лусия Каминос ❤️', 'lucia.jpg')">
+                    <img src="lucia.jpg" alt="Lucia" class="contact-avatar">
+                    <div class="contact-details">
+                        <span class="contact-name">Лусия Каминос ❤️</span>
+                        <span class="contact-status-text">Мобильный</span>
+                    </div>
+                    <i class="fa-solid fa-phone contact-call-icon"></i>
+                </div>
+                <div class="contact-row" onclick="startCall('Abdul_The_Goof', 'cal.jpg')">
+                    <img src="cal.jpg" alt="Abdul" class="contact-avatar">
+                    <div class="contact-details">
+                        <span class="contact-name">Abdul_The_Goof</span>
+                        <span class="contact-status-text">Рабочий</span>
+                    </div>
+                    <i class="fa-solid fa-phone contact-call-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-indicator-bar" onclick="location.href='index.html'">
+            <div class="home-indicator" style="background-color: #000000;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

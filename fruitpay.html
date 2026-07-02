@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FruitPay</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="dynamic-island"></div>
+
+        <div class="status-bar" id="global-status-bar">
+            <div class="status-time">00:00</div>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <div class="battery-container"><div class="battery-level"></div></div>
+            </div>
+        </div>
+
+        <div class="screen-content fruitpay-bg-app">
+            <div class="fruitpay-header">
+                <i class="fa-solid fa-chevron-left back-btn" onclick="location.href='index.html'"></i>
+                <h2>FruitPay</h2>
+            </div>
+            <div class="fruitpay-balance-section">
+                <span class="balance-title">Доступно</span>
+                <div class="balance-amount">$<span id="fruitpay-balance-value">250</span></div>
+            </div>
+            <button class="fruitpay-deposit-btn" onclick="handleDeposit()"><i class="fa-solid fa-wallet"></i> Пополнить карту</button>
+            <div class="wallet-card-wrapper">
+                <div class="fruitpay-card">
+                    <div class="card-top-row">
+                        <div class="card-logo-container"><span class="fruit-bowl-icon">🍎🥣</span><span class="card-brand-name">FruitPay</span></div>
+                        <div class="card-contactless"><i class="fa-solid fa-rss"></i></div>
+                    </div>
+                    <div class="card-bottom-row"><div class="card-chip"></div><div class="card-number-hidden">•••• 1986</div></div>
+                </div>
+            </div>
+            <div class="payment-instruction-zone">
+                <div class="contactless-glow-icon"><i class="fa-solid fa-wave-square"></i></div>
+                <p class="payment-text">Поднесите к терминалу</p>
+            </div>
+        </div>
+
+        <div class="home-indicator-bar" onclick="location.href='index.html'">
+            <div class="home-indicator" style="background-color: #ffffff;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

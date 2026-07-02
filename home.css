@@ -1,0 +1,150 @@
+/* Виджеты рабочего стола */
+.widgets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 60px 16px 15px 16px;
+}
+
+.widget {
+    height: 140px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.weather-widget {
+    background: linear-gradient(135deg, #5ac8fa, #007aff);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px;
+}
+
+.weather-widget .location { font-size: 15px; font-weight: 600; }
+.weather-widget .temperature { font-size: 34px; font-weight: 300; }
+
+.news-widget .news-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Сетка иконок приложений */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px 12px;
+    padding: 10px 16px;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.app-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 13px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 5px;
+    transition: transform 0.1s ease;
+}
+.app-item:active .app-icon { transform: scale(0.92); }
+
+.app-label {
+    font-size: 11px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Иконка WhatsUp */
+.whatsup-icon {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.whatsup-bubble {
+    width: 26px;
+    height: 22px;
+    background: white;
+    border-radius: 6px;
+    position: relative;
+}
+.whatsup-arrow {
+    position: absolute;
+    bottom: -4px;
+    left: 4px;
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid white;
+    transform: rotate(30deg);
+}
+
+/* Иконки других приложений */
+.lifeinvader-app-icon {
+    background: #ff0055;
+    color: white;
+    font-size: 34px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fruitpay-icon-img { object-fit: cover; }
+
+.settings-app-icon {
+    background: linear-gradient(135deg, #8e8e93, #636366);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+/* Нижний ДОК панель */
+.home-dock {
+    position: absolute;
+    bottom: 25px;
+    left: 14px;
+    right: 14px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(30px);
+    border-radius: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.dock-item {
+    width: 54px;
+    height: 54px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.phone-dock-btn { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+.search-dock-btn { background: linear-gradient(135deg, #34495e, #2c3e50); }
+.message-dock-btn { background: linear-gradient(135deg, #3498db, #2980b9); }
+.settings-dock-btn { background: linear-gradient(135deg, #8e8e93, #636366); }

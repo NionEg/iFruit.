@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsUp - Чаты</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="dynamic-island"></div>
+
+        <div class="status-bar dark-status-bar" id="global-status-bar">
+            <div class="status-time">00:00</div>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <div class="battery-container"><div class="battery-level"></div></div>
+            </div>
+        </div>
+
+        <div class="screen-content light-bg-app">
+            <div class="messenger-header">
+                <span class="back-btn" onclick="location.href='index.html'">Назад</span>
+                <h2>Чаты</h2>
+            </div>
+            <div class="chats-list">
+                <div class="chat-item" onclick="location.href='dialog.html'">
+                    <img src="lucia.jpg" alt="Lucia" class="chat-avatar">
+                    <div class="chat-info">
+                        <div class="chat-name-row"><span class="chat-name">Лусия ❤️</span><span class="chat-time">4:15 PM</span></div>
+                        <div class="chat-message-row"><span class="chat-last-message">Всегда за твоей спиной, Лу. Буду через две минуты.</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-indicator-bar" onclick="location.href='index.html'">
+            <div class="home-indicator" style="background-color: #000000;"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

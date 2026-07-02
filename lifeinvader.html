@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeInvader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="app-lifeinvader.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container lifeinvader-container">
+        <div class="dynamic-island"></div>
+
+        <div class="screen-content">
+            <div class="status-bar">
+                <div class="status-time">00:00</div>
+                <div class="status-icons">
+                    <i class="fa-solid fa-signal"></i>
+                    <i class="fa-solid fa-wifi"></i>
+                    <div class="battery-container"><div class="battery-level"></div></div>
+                </div>
+            </div>
+
+            <div class="lifeinvader-header">
+                <i class="fa-solid fa-chevron-left back-btn" onclick="location.href='index.html'"></i>
+                <h1 class="li-logo">Life<span>Invader</span></h1>
+            </div>
+
+            <div class="lifeinvader-feed">
+                <div class="li-post">
+                    <div class="li-post-header">
+                        <img src="lucia.jpg" alt="Lucia" class="li-avatar">
+                        <div class="li-user-info"><span class="li-username">Lucia_Official</span></div>
+                    </div>
+                    <div class="li-post-content">Вайс Сити — город возможностей! Главное — уметь ими пользоваться.</div>
+                    <div class="li-post-actions">
+                        <button class="li-action-btn" onclick="toggleStalk(this, 1420)"><i class="fa-solid fa-eye"></i> <span class="stalk-text">Stalk</span> (<span class="stalk-count">1420</span>)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home-indicator-bar" onclick="location.href='index.html'">
+                <div class="home-indicator"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вызов...</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="phone-container">
+        <div class="calling-blur-bg" id="calling-bg"></div>
+        <div class="dynamic-island"></div>
+
+        <div class="status-bar" id="global-status-bar">
+            <div class="status-time">00:00</div>
+            <div class="status-icons">
+                <i class="fa-solid fa-signal"></i>
+                <i class="fa-solid fa-wifi"></i>
+                <div class="battery-container"><div class="battery-level"></div></div>
+            </div>
+        </div>
+
+        <div class="screen-content">
+            <div class="calling-info">
+                <img src="lucia.jpg" alt="Avatar" class="calling-avatar" id="calling-avatar-img">
+                <h2 id="calling-contact-name">Вызов</h2>
+                <span class="calling-status-label">вызов...</span>
+            </div>
+            <div class="calling-actions-grid">
+                <div class="action-circle"><i class="fa-solid fa-microphone-slash"></i></div>
+                <div class="action-circle"><i class="fa-solid fa-table-cells"></i></div>
+                <div class="action-circle"><i class="fa-solid fa-volume-high"></i></div>
+                <div class="action-circle"><i class="fa-solid fa-plus"></i></div>
+                <div class="action-circle"><i class="fa-solid fa-video"></i></div>
+                <div class="action-circle"><i class="fa-solid fa-user"></i></div>
+            </div>
+            <div class="end-call-zone">
+                <div class="end-call-btn" onclick="location.href='phone.html'"><i class="fa-solid fa-phone-slash"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Подхватываем данные звонка из кэша
+        document.getElementById('calling-contact-name').textContent = localStorage.getItem('callName') || 'Вызов';
+        const avatar = localStorage.getItem('callImg') || 'lucia.jpg';
+        document.getElementById('calling-avatar-img').src = avatar;
+        document.getElementById('calling-bg').style.backgroundImage = `url(${avatar})`;
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
