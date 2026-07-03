@@ -2,49 +2,219 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LifeInvader</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="app-lifeinvader.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="phone-container lifeinvader-container">
+    <div class="phone-wrapper">
         <div class="dynamic-island"></div>
-
-        <div class="screen-content">
-            <div class="status-bar">
-                <div class="status-time">00:00</div>
-                <div class="status-icons">
-                    <i class="fa-solid fa-signal"></i>
-                    <i class="fa-solid fa-wifi"></i>
-                    <div class="battery-container"><div class="battery-level"></div></div>
-                </div>
-            </div>
-
-            <div class="lifeinvader-header">
-                <i class="fa-solid fa-chevron-left back-btn" onclick="location.href='index.html'"></i>
-                <h1 class="li-logo">Life<span>Invader</span></h1>
-            </div>
-
-            <div class="lifeinvader-feed">
-                <div class="li-post">
-                    <div class="li-post-header">
-                        <img src="lucia.jpg" alt="Lucia" class="li-avatar">
-                        <div class="li-user-info"><span class="li-username">Lucia_Official</span></div>
-                    </div>
-                    <div class="li-post-content">Вайс Сити — город возможностей! Главное — уметь ими пользоваться.</div>
-                    <div class="li-post-actions">
-                        <button class="li-action-btn" onclick="toggleStalk(this, 1420)"><i class="fa-solid fa-eye"></i> <span class="stalk-text">Stalk</span> (<span class="stalk-count">1420</span>)</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="home-indicator-bar" onclick="location.href='index.html'">
-                <div class="home-indicator"></div>
+        
+        <div class="status-bar">
+            <div class="status-time" id="clock">00:00</div>
+            <div class="status-indicators">
+                <span>📶</span><span>📶</span>
+                <div class="battery-container"><div class="battery-level" id="batteryLevel"></div></div>
             </div>
         </div>
+
+        <div class="screen-content li-main">
+            <div class="li-top">
+                <span class="li-back" onclick="window.location.href='index.html'">‹ Назад</span>
+                <h1 class="li-logo-text">LifeInvader</h1>
+            </div>
+
+            <div class="feed-container">
+                
+                <div class="feed-post" data-post-id="lucia-post">
+                    <div class="post-header">
+                        <div class="post-owner">
+                            <img src="lucia.jpg" class="owner-avatar" alt="Lucia" onerror="this.src='user.jpg';">
+                            <div class="owner-info">
+                                <h4>Лусия Каминос</h4>
+                                <span class="post-time">15 минут назад</span>
+                            </div>
+                        </div>
+                        <button class="stalk-btn" onclick="toggleStalk(this)">Stalk</button>
+                    </div>
+                    <p class="post-text">Если не рисковать всем, то ради чего вообще жить? Дальше — больше. 🏎️💨</p>
+                    <div class="post-img-container">
+                        <img src="li_post1.jpg" alt="Lucia Ride" class="post-attached-img" onerror="this.style.background='#ff00ff';">
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn like-btn" onclick="likePost('lucia-post')">
+                            <span class="heart-icon">❤️</span> <span class="like-count">1,240</span>
+                        </button>
+                        <button class="action-btn comment-toggle-btn">💬 Комментарии</button>
+                    </div>
+                    <div class="comments-section">
+                        <div class="comments-list">
+                            <div class="comment-item">
+                                <img src="user.jpg" class="comment-avatar" alt="User">
+                                <div><strong>Джейсон Дюваль:</strong> Включай зажигание, я уже рядом. 😎</div>
+                            </div>
+                        </div>
+                        <div class="comment-input-box">
+                            <input type="text" class="li-comment-input" placeholder="Написать комментарий...">
+                            <button class="li-comment-send" onclick="addComment(this)">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feed-post" data-post-id="cal-post">
+                    <div class="post-header">
+                        <div class="post-owner">
+                            <img src="cal.jpg" class="owner-avatar" alt="Cal" onerror="this.src='user.jpg';">
+                            <div class="owner-info">
+                                <h4>Кэл Хэмптон</h4>
+                                <span class="post-time">2 часа назад</span>
+                            </div>
+                        </div>
+                        <button class="stalk-btn" onclick="toggleStalk(this)">Stalk</button>
+                    </div>
+                    <p class="post-text">Мои ребята подготовили подвеску для болот. Всё готово к делу, Дюваль. Без пижонов.</p>
+                    <div class="post-img-container">
+                        <img src="li_post2.jpg" alt="Cal Garage" class="post-attached-img" onerror="this.style.background='#3d2542';">
+                    </div>
+                    <div class="post-actions">
+                        <button class="action-btn like-btn" onclick="likePost('cal-post')">
+                            <span class="heart-icon">❤️</span> <span class="like-count">482</span>
+                        </button>
+                        <button class="action-btn comment-toggle-btn">💬 Комментарии</button>
+                    </div>
+                    <div class="comments-section">
+                        <div class="comments-list"></div>
+                        <div class="comment-input-box">
+                            <input type="text" class="li-comment-input" placeholder="Написать комментарий...">
+                            <button class="li-comment-send" onclick="addComment(this)">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feed-post" data-post-id="vice-leaks">
+                    <div class="post-header">
+                        <div class="post-owner">
+                            <img src="user.jpg" class="owner-avatar" alt="Leaks">
+                            <div class="owner-info">
+                                <h4>ViceCity_Leaks</h4>
+                                <span class="post-time">5 часов назад</span>
+                            </div>
+                        </div>
+                        <button class="stalk-btn" onclick="toggleStalk(this)">Stalk</button>
+                    </div>
+                    <p class="post-text">Шериф Лео округа Леонида закупает новую партию перехватчиков. Стритрейсерам и контрабандистам приготовиться, гайки закручивают по полной. 🚔</p>
+                    <div class="post-actions">
+                        <button class="action-btn like-btn" onclick="likePost('vice-leaks')">
+                            <span class="heart-icon">❤️</span> <span class="like-count">3,911</span>
+                        </button>
+                        <button class="action-btn comment-toggle-btn">💬 Комментарии</button>
+                    </div>
+                    <div class="comments-section">
+                        <div class="comments-list">
+                            <div class="comment-item">
+                                <img src="user.jpg" class="comment-avatar" alt="User">
+                                <div><strong>Пользователь404:</strong> На болотах их перехватчики всё равно увязнут)</div>
+                            </div>
+                        </div>
+                        <div class="comment-input-box">
+                            <input type="text" class="li-comment-input" placeholder="Написать комментарий...">
+                            <button class="li-comment-send" onclick="addComment(this)">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feed-post" data-post-id="suburban-shop">
+                    <div class="post-header">
+                        <div class="post-owner">
+                            <img src="user.jpg" class="owner-avatar" alt="Suburban">
+                            <div class="owner-info">
+                                <h4>Suburban Леонида</h4>
+                                <span class="post-time">Вчера</span>
+                            </div>
+                        </div>
+                        <button class="stalk-btn" onclick="toggleStalk(this)">Stalk</button>
+                    </div>
+                    <p class="post-text">Новая коллекция уличных худи и бандан уже во всех магазинах штата. Оденься правильно перед следующим делом. 🧢🧥</p>
+                    <div class="post-actions">
+                        <button class="action-btn like-btn" onclick="likePost('suburban-shop')">
+                            <span class="heart-icon">❤️</span> <span class="like-count">815</span>
+                        </button>
+                        <button class="action-btn comment-toggle-btn">💬 Комментарии</button>
+                    </div>
+                    <div class="comments-section">
+                        <div class="comments-list"></div>
+                        <div class="comment-input-box">
+                            <input type="text" class="li-comment-input" placeholder="Написать комментарий...">
+                            <button class="li-comment-send" onclick="addComment(this)">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="home-indicator-zone" onclick="window.location.href='index.html'">
+            <div class="home-indicator"></div>
+        </div>
     </div>
+
     <script src="script.js"></script>
+    <script>
+        function toggleStalk(btn) {
+            if (btn.classList.contains('stalking')) {
+                btn.classList.remove('stalking');
+                btn.textContent = 'Stalk';
+            } else {
+                btn.classList.add('stalking');
+                btn.textContent = 'Stalking';
+            }
+        }
+
+        function likePost(postId) {
+            const post = document.querySelector(`[data-post-id="${postId}"]`);
+            const likeBtn = post.querySelector('.like-btn');
+            const likeCountEl = post.querySelector('.like-count');
+            
+            let currentLikes = parseInt(likeCountEl.textContent.replace(/,/g, ''));
+            
+            if (likeBtn.classList.contains('active-liked')) {
+                likeBtn.classList.remove('active-liked');
+                currentLikes--;
+            } else {
+                likeBtn.classList.add('active-liked');
+                currentLikes++;
+            }
+            
+            likeCountEl.textContent = currentLikes.toLocaleString('en-US');
+        }
+
+        function addComment(btn) {
+            const input = btn.previousElementSibling;
+            const text = input.value.trim();
+            if (!text) return;
+
+            const commentsList = btn.closest('.comments-section').querySelector('.comments-list');
+            
+            const commentItem = document.createElement('div');
+            commentItem.className = 'comment-item';
+            commentItem.innerHTML = `
+                <img src="user.jpg" class="comment-avatar" alt="User">
+                <div><strong>Джейсон (Вы):</strong> ${text}</div>
+            `;
+            
+            commentsList.appendChild(commentItem);
+            input.value = '';
+            commentsList.scrollTop = commentsList.scrollHeight;
+        }
+
+        document.querySelectorAll('.li-comment-input').forEach(input => {
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const sendBtn = input.nextElementSibling;
+                    sendBtn.click();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

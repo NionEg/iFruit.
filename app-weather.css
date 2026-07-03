@@ -1,26 +1,143 @@
-.weather-container {
-    background: linear-gradient(180deg, #1d3d63 0%, #4a7fa3 100%) !important;
-    color: #ffffff;
-    height: 100%;
+/* Главный фон приложения — красивый градиент неба */
+.weather-main {
+    background: linear-gradient(180deg, #4da1ff 0%, #94caff 100%);
+    color: white;
+    padding: 0 16px 20px 16px;
     display: flex;
     flex-direction: column;
-    padding: 50px 16px 20px 16px;
+    gap: 16px;
 }
 
-.weather-header { display: flex; align-items: center; position: relative; margin-bottom: 10px; }
-.weather-header .back-btn { font-size: 18px; color: white; cursor: pointer; position: absolute; left: 0; }
-.weather-header h2 { width: 100%; text-align: center; font-size: 18px; font-weight: 500; }
+/* Статус-бар теперь идеально сливается с верхней точкой градиента приложения */
+.status-bar.weather-status {
+    background-color: #4da1ff;
+    color: #ffffff;
+}
 
-.weather-main { text-align: center; margin: 20px 0; }
-.main-city { font-size: 28px; font-weight: 400; }
-.main-temp { font-size: 72px; font-weight: 200; margin: 5px 0; position: relative; display: inline-block; padding-right: 15px; }
-.main-condition { font-size: 16px; font-weight: 500; }
-.high-low { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+/* Навигация с кнопкой назад */
+.w-nav {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+}
 
-.weather-section { background: rgba(0, 0, 0, 0.15); border-radius: 16px; padding: 14px; margin-top: 10px; }
-.weather-section h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+.w-back {
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    transition: opacity 0.2s;
+}
 
-.hourly-scroll { display: flex; gap: 18px; overflow-x: auto; padding-bottom: 5px; }
-.hourly-scroll::-webkit-scrollbar { display: none; }
-.hourly-item { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 45px; font-size: 13px; font-weight: 500; }
-.hourly-item i { font-size: 16px; }
+.w-back:active {
+    opacity: 0.6;
+}
+
+/* Главный заголовок погоды */
+.weather-header { 
+    text-align: center; 
+    margin-top: 5px;
+    margin-bottom: 10px; 
+}
+
+.w-city { 
+    font-size: 32px; 
+    font-weight: 400; 
+    letter-spacing: -0.5px;
+}
+
+.w-temp { 
+    font-size: 82px; 
+    font-weight: 100; 
+    margin: -5px 0; 
+}
+
+.w-desc { 
+    font-size: 20px; 
+    font-weight: 500; 
+}
+
+.w-limits { 
+    font-size: 15px; 
+    margin-top: 4px; 
+    opacity: 0.9; 
+}
+
+/* Общий базовый стиль для карточек-информеров */
+.hourly-forecast, .daily-forecast { 
+    background: rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px; 
+    padding: 16px; 
+}
+
+/* Заголовки блоков */
+.hourly-forecast h3, .daily-forecast h3 { 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    margin-bottom: 14px; 
+    opacity: 0.75; 
+    letter-spacing: 0.5px; 
+    font-weight: 600;
+}
+
+/* Почасовая сетка */
+.hours-row { 
+    display: flex; 
+    justify-content: space-around; 
+}
+
+.hour-item { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 8px; 
+    font-size: 15px;
+}
+
+.hour-item span:first-child { 
+    font-size: 13px; 
+    opacity: 0.8; 
+}
+
+/* Блок прогноза на 7 дней */
+.days-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Каждая строчка дня выровнена по колонкам */
+.day-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 17px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.day-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Фиксированная ширина ячеек для идеального ровного списка */
+.day-name {
+    width: 40px;
+    text-align: left;
+}
+
+.day-icon {
+    flex: 1;
+    text-align: center;
+    font-size: 19px;
+}
+
+.day-temp {
+    width: 100px;
+    text-align: right;
+    font-variant-numeric: tabular-nums; /* Делает цифры одинаковой ширины */
+}

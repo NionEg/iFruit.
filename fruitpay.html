@@ -2,53 +2,174 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FruitPay</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="app-fruitpay.css">
 </head>
 <body>
-    <div class="phone-container">
+    <div class="phone-wrapper">
         <div class="dynamic-island"></div>
-
-        <div class="status-bar" id="global-status-bar">
-            <div class="status-time">00:00</div>
-            <div class="status-icons">
-                <i class="fa-solid fa-signal"></i>
-                <i class="fa-solid fa-wifi"></i>
-                <div class="battery-container"><div class="battery-level"></div></div>
+        
+        <div class="status-bar">
+            <div class="status-time" id="clock">00:00</div>
+            <div class="status-indicators">
+                <span>📶</span><span>📶</span>
+                <div class="battery-container"><div class="battery-level" id="batteryLevel"></div></div>
             </div>
         </div>
 
-        <div class="screen-content fruitpay-bg-app">
-            <div class="fruitpay-header">
-                <i class="fa-solid fa-chevron-left back-btn" onclick="location.href='index.html'"></i>
-                <h2>FruitPay</h2>
-            </div>
-            <div class="fruitpay-balance-section">
-                <span class="balance-title">Доступно</span>
-                <div class="balance-amount">$<span id="fruitpay-balance-value">250</span></div>
-            </div>
-            <button class="fruitpay-deposit-btn" onclick="handleDeposit()"><i class="fa-solid fa-wallet"></i> Пополнить карту</button>
-            <div class="wallet-card-wrapper">
-                <div class="fruitpay-card">
-                    <div class="card-top-row">
-                        <div class="card-logo-container"><span class="fruit-bowl-icon">🍎🥣</span><span class="card-brand-name">FruitPay</span></div>
-                        <div class="card-contactless"><i class="fa-solid fa-rss"></i></div>
+        <div class="screen-content fp-main">
+            <div id="tab-wallet" class="fp-tab-content active-tab">
+                <div class="fp-navbar">
+                    <span class="fp-back" onclick="window.location.href='index.html'">‹ Домой</span>
+                    <h1 class="fp-logo">FruitPay</h1>
+                    <span class="fp-add-card">+</span>
+                </div>
+
+                <div class="card-container">
+                    <div class="ifruit-card">
+                        <div class="card-header">
+                            <span class="card-brand">iFruit Card</span>
+                            <span class="card-chip">📟</span>
+                        </div>
+                        <div class="card-body">
+                            <span class="card-number">•••• •••• •••• 2026</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-holder">JASON DUVAL</span>
+                            <div class="card-logo-icon"></div>
+                        </div>
                     </div>
-                    <div class="card-bottom-row"><div class="card-chip"></div><div class="card-number-hidden">•••• 1986</div></div>
+                </div>
+
+                <div class="balance-area">
+                    <span class="balance-title">Текущий баланс</span>
+                    <span class="amount" id="bal-value">$4,850</span>
+                </div>
+
+                <div class="pay-hint-box" onclick="simulatePayment()">
+                    <div class="pay-trigger-btn">
+                        <span class="nfc-icon">📱</span>
+                        <span>Дважды нажмите для оплаты</span>
+                    </div>
+                </div>
+
+                <div class="transactions-section">
+                    <h3 class="section-title">Последние транзакции</h3>
+                    <div class="transactions-list">
+                        <div class="transaction-item">
+                            <div class="tx-info">
+                                <span class="tx-name">Suburban Clothing</span>
+                                <span class="tx-date">Сегодня, 11:24</span>
+                            </div>
+                            <span class="tx-amount negative">-$120</span>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="tx-info">
+                                <span class="tx-name">Ammu-Nation Shop</span>
+                                <span class="tx-date">Вчера, 18:45</span>
+                            </div>
+                            <span class="tx-amount negative">-$850</span>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="tx-info">
+                                <span class="tx-name">Пополнение счета</span>
+                                <span class="tx-date">2 июля, 10:12</span>
+                            </div>
+                            <span class="tx-amount positive">+$5,000</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="payment-instruction-zone">
-                <div class="contactless-glow-icon"><i class="fa-solid fa-wave-square"></i></div>
-                <p class="payment-text">Поднесите к терминалу</p>
+
+            <div id="tab-cards" class="fp-tab-content">
+                <div class="fp-navbar-simple">
+                    <h2>Ваши карты</h2>
+                </div>
+                <div class="simple-center">
+                    <div class="empty-state">Основная карта iFruit Card активна и подключена к FruitPay.</div>
+                </div>
             </div>
+
+            <div id="tab-settings" class="fp-tab-content">
+                <div class="fp-navbar-simple">
+                    <h2>Настройки FruitPay</h2>
+                </div>
+                <div class="settings-list-fp">
+                    <div class="fp-setting-item">Экспресс-оплата <span>Вкл</span></div>
+                    <div class="fp-setting-item">Подтверждение по FaceID <span>Вкл</span></div>
+                    <div class="fp-setting-item">Уведомления о покупках <span>Вкл</span></div>
+                </div>
+            </div>
+
+            <div class="fp-tab-bar">
+                <div class="tab-btn active" onclick="switchTab(this, 'tab-wallet')">
+                    <span class="tab-icon">💳</span>
+                    <span class="tab-text">Кошелек</span>
+                </div>
+                <div class="tab-btn" onclick="switchTab(this, 'tab-cards')">
+                    <span class="tab-icon">📇</span>
+                    <span class="tab-text">Карты</span>
+                </div>
+                <div class="tab-btn" onclick="switchTab(this, 'tab-settings')">
+                    <span class="tab-icon">⚙️</span>
+                    <span class="tab-text">Настройки</span>
+                </div>
+            </div>
+
         </div>
 
-        <div class="home-indicator-bar" onclick="location.href='index.html'">
-            <div class="home-indicator" style="background-color: #ffffff;"></div>
+        <div class="home-indicator-zone" onclick="window.location.href='index.html'">
+            <div class="home-indicator"></div>
         </div>
     </div>
+
     <script src="script.js"></script>
+    <script>
+        // Переключение экранов внизу приложения
+        function switchTab(btn, tabId) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.fp-tab-content').forEach(c => c.classList.remove('active-tab'));
+            
+            btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active-tab');
+        }
+
+        // Симуляция быстрой бесконтактной оплаты в магазине
+        function simulatePayment() {
+            const balanceEl = document.getElementById("bal-value");
+            let currentBalance = parseInt(balanceEl.textContent.replace('$', '').replace(/,/g, ''));
+            
+            if (currentBalance < 50) {
+                alert("Недостаточно средств на iFruit Card!");
+                return;
+            }
+
+            // Звуковой или визуальный эффект клика
+            let triggerBox = document.querySelector('.pay-hint-box');
+            triggerBox.style.background = '#2c2c2e';
+            
+            setTimeout(() => {
+                currentBalance -= 50;
+                balanceEl.textContent = '$' + currentBalance.toLocaleString('en-US');
+                
+                // Добавляем покупку в ленту транзакций динамически
+                const txList = document.querySelector('.transactions-list');
+                const newTx = document.createElement('div');
+                newTx.className = 'transaction-item anim-new-tx';
+                newTx.innerHTML = `
+                    <div class="tx-info">
+                        <span class="tx-name">FruitCafe (Бесконтактно)</span>
+                        <span class="tx-date">Только что</span>
+                    </div>
+                    <span class="tx-amount negative">-$50</span>
+                `;
+                txList.insertBefore(newTx, txList.firstChild);
+                
+                triggerBox.style.background = '#1c1c1e';
+                alert("💳 Оплата успешно выполнена: -$50");
+            }, 300);
+        }
+    </script>
 </body>
 </html>

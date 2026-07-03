@@ -2,95 +2,99 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Настройки</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="app-settings.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="phone-container" style="background-color: #f2f2f7;">
+    <div class="phone-wrapper">
         <div class="dynamic-island"></div>
+        
+        <div class="status-bar dark-status">
+            <div class="status-time" id="clock">00:00</div>
+            <div class="status-indicators">
+                <span id="status-airplane" class="hidden-indicator">✈️</span>
+                <span id="status-signal-1" class="signal-icon">📶</span>
+                <span id="status-signal-2" class="signal-icon">📶</span>
+                <div class="battery-container"><div class="battery-level" id="batteryLevel"></div></div>
+            </div>
+        </div>
 
-        <div class="screen-content">
-            <div class="status-bar dark-status-bar">
-                <div class="status-time">00:00</div>
-                <div class="status-icons">
-                    <i class="fa-solid fa-signal"></i>
-                    <i class="fa-solid fa-wifi"></i>
-                    <div class="battery-container">
-                        <div class="battery-level"></div>
-                    </div>
-                </div>
+        <div class="screen-content st-bg">
+            <div class="st-nav">
+                <span class="st-back" onclick="window.location.href='index.html'">‹ Назад</span>
             </div>
 
-            <div class="settings-header">
-                <i class="fa-solid fa-chevron-left back-btn" onclick="location.href='index.html'"></i>
-                <h1 class="settings-title">Настройки</h1>
-            </div>
+            <div class="st-scroll">
+                <h1 class="st-main-title">Настройки</h1>
 
-            <div class="settings-scroll-container">
-                <div class="settings-profile-card">
-                    <img src="lucia.jpg" alt="Lucia" class="profile-avatar">
-                    <div class="profile-info">
-                        <span class="profile-name">Lucia</span>
-                        <span class="profile-subtitle">iFruit ID, iCloud+, контент и покупки</span>
+                <div class="st-block profile-item">
+                    <img src="lucia.jpg" class="avatar" alt="Lucia" onerror="this.src='user.jpg';">
+                    <div class="p-meta">
+                        <h2>Lucia Camino</h2>
+                        <p>iFruit ID, iCloud+, контент и покупки</p>
                     </div>
-                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                    <span class="arrow">›</span>
                 </div>
 
-                <div class="settings-group">
-                    <div class="settings-item">
-                        <div class="settings-item-left">
-                            <div class="icon-box orange-bg"><i class="fa-solid fa-plane"></i></div>
-                            <span class="item-title">Авиарежим</span>
-                        </div>
-                        <label class="ios-switch"><input type="checkbox" id="airplane-mode"><span class="slider"></span></label>
+                <div class="st-block rows-list">
+                    <div class="row-line">
+                        <div class="badge orange">✈️</div>
+                        <span class="name">Авиарежим</span>
+                        <label class="toggle">
+                            <input type="checkbox" id="airplane-toggle">
+                            <span class="slider"></span>
+                        </label>
                     </div>
-                    <div class="settings-item clickable">
-                        <div class="settings-item-left">
-                            <div class="icon-box blue-bg"><i class="fa-solid fa-wifi"></i></div>
-                            <span class="item-title">Wi-Fi</span>
-                        </div>
-                        <div class="settings-item-right"><span class="item-value">Vice City Net</span><i class="fa-solid fa-chevron-right arrow-icon"></i></div>
+                    <div class="row-line">
+                        <div class="badge blue">🌐</div>
+                        <span class="name">Wi-Fi</span>
+                        <span class="val" id="settings-wifi-val">ViceCity_Net</span>
+                        <span class="arrow">›</span>
                     </div>
-                    <div class="settings-item clickable">
-                        <div class="settings-item-left">
-                            <div class="icon-box blue-bg"><i class="fa-solid fa-bluetooth"></i></div>
-                            <span class="item-title">Bluetooth</span>
-                        </div>
-                        <div class="settings-item-right"><span class="item-value">Вкл.</span><i class="fa-solid fa-chevron-right arrow-icon"></i></div>
-                    </div>
-                    <div class="settings-item clickable">
-                        <div class="settings-item-left">
-                            <div class="icon-box green-bg"><i class="fa-solid fa-signal"></i></div>
-                            <span class="item-title">Сотовая связь</span>
-                        </div>
-                        <div class="settings-item-right"><i class="fa-solid fa-chevron-right arrow-icon"></i></div>
+                    <div class="row-line">
+                        <div class="badge green">📶</div>
+                        <span class="name">Сотовая связь</span>
+                        <span class="val" id="settings-cellular-val">Вкл.</span>
+                        <span class="arrow">›</span>
                     </div>
                 </div>
 
-                <div class="settings-group">
-                    <div class="settings-item clickable">
-                        <div class="settings-item-left">
-                            <div class="icon-box red-bg"><i class="fa-solid fa-bell"></i></div>
-                            <span class="item-title">Уведомления</span>
-                        </div>
-                        <div class="settings-item-right"><i class="fa-solid fa-chevron-right arrow-icon"></i></div>
+                <div class="st-block rows-list">
+                    <div class="row-line">
+                        <div class="badge red">🔔</div>
+                        <span class="name">Уведомления</span>
+                        <span class="arrow">›</span>
                     </div>
-                    <div class="settings-item clickable">
-                        <div class="settings-item-left">
-                            <div class="icon-box red-bg"><i class="fa-solid fa-volume-high"></i></div>
-                            <span class="item-title">Звуки, тактильные сигналы</span>
-                        </div>
-                        <div class="settings-item-right"><i class="fa-solid fa-chevron-right arrow-icon"></i></div>
+                    <div class="row-line">
+                        <div class="badge purple">🔊</div>
+                        <span class="name">Звуки, тактильные сигналы</span>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="row-line">
+                        <div class="badge bright-blue">☀️</div>
+                        <span class="name">Экран и яркость</span>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="row-line">
+                        <div class="badge gray">⚙️</div>
+                        <span class="name">Основные</span>
+                        <span class="arrow">›</span>
+                    </div>
+                </div>
+
+                <div class="st-block rows-list">
+                    <div class="row-line">
+                        <div class="badge hand-blue">✋</div>
+                        <span class="name">Конфиденциальность и безопасность</span>
+                        <span class="arrow">›</span>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="home-indicator-bar dark-indicator" onclick="location.href='index.html'">
-                <div class="home-indicator"></div>
-            </div>
+        <div class="home-indicator-zone" onclick="window.location.href='index.html'">
+            <div class="home-indicator dark-indicator"></div>
         </div>
     </div>
     <script src="script.js"></script>

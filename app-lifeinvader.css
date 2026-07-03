@@ -1,42 +1,266 @@
-.lifeinvader-container {
-    background: #121212 !important;
+/* Базовый фон LifeInvader в фирменных оттенках */
+.li-main {
+    background: #150a17; /* Глубокий темно-фиолетовый */
     color: #ffffff;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    user-select: none;
 }
 
-.lifeinvader-header {
-    padding: 50px 16px 12px 16px;
-    background: #1c1c1e;
-    border-bottom: 1px solid #2c2c2e;
+/* Верхняя фирменная панель */
+.li-top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: #241227;
+    border-bottom: 2px solid #ff00ff;
     position: relative;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.lifeinvader-header .back-btn { color: #ff0055; cursor: pointer; font-size: 18px; position: absolute; left: 16px; }
-.li-logo { width: 100%; text-align: center; font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
-.li-logo span { color: #ff0055; }
+.li-back {
+    color: #ff00ff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-.lifeinvader-feed { flex: 1; overflow-y: auto; padding: 12px; }
-.li-post { background: #1c1c1e; border-radius: 14px; padding: 14px; margin-bottom: 12px; border: 1px solid #2c2c2e; }
-.li-post-header { display: flex; align-items: center; margin-bottom: 10px; }
-.li-avatar { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; margin-right: 10px; }
-.li-username { font-weight: 600; font-size: 14px; }
-.li-post-content { font-size: 13px; line-height: 1.4; color: #e5e5ea; margin-bottom: 12px; }
+.li-logo-text {
+    font-size: 22px;
+    font-weight: 900;
+    color: #ff00ff;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.6);
+    margin: 0 auto;
+}
 
-.li-action-btn {
-    background: #2c2c2e;
-    border: none;
+/* Контейнер ленты новостей */
+.feed-container {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Карточка поста */
+.feed-post {
+    background: #2c1630;
+    border-radius: 18px;
+    padding: 14px;
+    border: 1px solid #422048;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Шапка поста с автором и кнопкой Stalk */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-owner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.owner-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #ff00ff;
+    background-color: #1a081e;
+}
+
+.owner-info h4 {
+    font-size: 14px;
+    font-weight: 700;
     color: #ffffff;
-    padding: 6px 12px;
+    margin: 0;
+}
+
+.post-time {
+    font-size: 11px;
+    color: #a58fa9;
+}
+
+/* Фирменная кнопка Stalk / Следить */
+.stalk-btn {
+    background: transparent;
+    border: 1.5px solid #ff00ff;
+    color: #ff00ff;
+    padding: 5px 14px;
     border-radius: 20px;
     font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.stalk-btn.stalking {
+    background: #ff00ff;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+/* Текст публикации */
+.post-text {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #f3ebf5;
+    margin: 2px 0;
+}
+
+/* Контейнер прикрепленной картинки к посту */
+.post-img-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a081e;
+    max-height: 180px;
+}
+
+.post-attached-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Панель кнопок действий (Лайки, Комменты) */
+.post-actions {
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid #422048;
+    padding-top: 10px;
+    margin-top: 4px;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    color: #a58fa9;
+    font-size: 12.5px;
     font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 6px;
 }
-.li-action-btn.stalking-active { background: #ff0055; }
+
+.action-btn:hover {
+    color: #ffffff;
+}
+
+/* Интерактивное состояние лайка */
+.like-btn .heart-icon {
+    filter: grayscale(1);
+    transition: filter 0.2s;
+}
+
+.like-btn.active-liked {
+    color: #ff00ff;
+}
+
+.like-btn.active-liked .heart-icon {
+    filter: grayscale(0);
+}
+
+/* Секция комментариев внутри карточки */
+.comments-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #211024;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 4px;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.comment-item {
+    font-size: 11.5px;
+    line-height: 1.3;
+    color: #e2d3e5;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 8px;
+    border-radius: 6px;
+}
+
+.comment-item strong {
+    color: #ff00ff;
+    margin-right: 4px;
+}
+
+/* Форма отправки нового комментария */
+.comment-input-box {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.li-comment-input {
+    flex: 1;
+    background: #150a17;
+    border: 1px solid #422048;
+    border-radius: 8px;
+    padding: 6px 10px;
+    color: #ffffff;
+    font-size: 12px;
+    outline: none;
+}
+
+.li-comment-input::placeholder {
+    color: #6e5872;
+}
+
+.li-comment-send {
+    background: #ff00ff;
+    color: white;
+    border: none;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.li-comment-send:active {
+    background: #cc00cc;
+}
+
+/* Маленькие аватарки для комментариев */
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.comment-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #422048;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
